@@ -56,7 +56,7 @@ app.get("/getblockinfo", async(req,res) => {
 
         // we want all the latest transactions from latest block
         for (let i = 0; i<5; i++) {
-            const previousBlockNrs = await Molaris.EvmApi.block.getBlock({
+            const previousBlockNrs = await Moralis.EvmApi.block.getBlock({
                 chain:"0x1",
                 blockNumberOrHash: blockNrOrParentHash
             })

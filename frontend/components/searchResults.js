@@ -7,7 +7,7 @@ export default function SearchResults(props) {
       <p className={styles.amountOfTransactions}>
         Latest 25 from a total of{" "}
         <span className={styles.blueText}>{props.result.result.length}</span>
-        transactions
+        {" "}transactions
       </p>
       <table className={styles.txnSection}>
         <thead>

@@ -18,7 +18,8 @@
   color: #bbbbbb;
   height: 3rem;
   font-size: 0.85rem;
-  padding: 0 11.5rem;
+  padding-top: 0;
+  padding-left:  7.5rem;
   border-bottom: 1px solid #222222;
 }
 
@@ -27,17 +28,24 @@
   align-items: center;
   justify-content: space-between;
   height: 3.3rem;
-  padding: 0 11.5rem;
+  padding: 0 7.5rem;
+  font-size: 0.90rem;
   border-bottom: 1px solid #222222;
 }
 
+
 .logo {
-  width: 9rem;
+  width: 11rem;
   height: auto;
+  margin-right: 0;
+  padding-right: 15rem;
+  flex: 1;
+  
 }
 
 .menu {
   display: flex;
+  flex: 6;
   align-items: center;
   justify-content: space-between;
   color: #cccccc;
@@ -82,32 +90,7 @@
   padding-top: 3rem;
 }
 
-.adSection {
-  display: flex;
-  justify-content: center;
-  background-color: #3778adc7;
-  /* color: #3778ad; */
-  width: 30%;
-  height: 60%;
-  margin-left: 5rem;
-  align-items: center;
-  border-radius: 1rem;
-}
 
-.adtext {
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-align: center;
-}
-
-.adSection > section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 13rem;
-  margin-left: 1rem;
-  padding-left: 0.5rem;
-}
 
 .float {
   animation-name: Floating;
@@ -134,7 +117,7 @@
 
 .searchSection > h3 {
   padding-bottom: 1rem;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   letter-spacing: 0.02rem;
 }
 
@@ -202,11 +185,14 @@
 
 .searchResults {
   background-color: #111111;
-  margin: 2rem 11.5rem;
+  margin: 1.5rem 3.5rem;
   border: 1px solid #222222;
   border-radius: 0.5rem;
   box-shadow: 0rem 0 1.5rem #ffffff09;
   padding: 1rem;
+  margin-bottom: 4rem;
+  width: 90%;
+  table-layout: fixed;
 }
 
 .searchResults > p {
@@ -214,6 +200,7 @@
   padding-bottom: 1rem;
   border-bottom: 1px solid #191919;
   margin-bottom: 1rem;
+  font-size: 1em;
 }
 
 .blueText {
@@ -221,9 +208,12 @@
 }
 
 .txnSection {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-content: space-between;
+  padding: 0 0.2rem;
+  font-size: 0.8rem;
 }
 
 .txnTitle {
@@ -232,6 +222,7 @@
   border-bottom: 1px solid #191919;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
+
 }
 
 .txnTitle > th {
@@ -240,6 +231,7 @@
 }
 
 .txn {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #191919;
@@ -249,14 +241,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 9rem;
+  width: 9em;
   height: 3rem;
   text-align: center;
+  text-overflow: ellipsis;
 }
 
 .transfer {
   font-size: 0.8rem;
-  width: 8rem;
+  width: fit-content;
   background-color: #151515;
   padding: 0.35rem 1.2rem;
   border: 1px solid #2c2c2c;
@@ -269,7 +262,7 @@
   align-items: center;
   width: 2.5rem;
   height: 1.5rem;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   font-weight: bold;
   background-color: #161f1d;
   color: #479f87;
@@ -283,7 +276,7 @@
   align-items: center;
   width: 2.5rem;
   height: 1.5rem;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   font-weight: bold;
   background-color: #2d2615;
   color: #96792a;
@@ -367,11 +360,16 @@
   color: #ffffff;
 }
 
+.hero_box {
+  font-size: 0.9em;
+}
+
 .latestResults_body {
   display: flex;
   justify-content: space-between;
   width: 79%;
   margin: 1rem auto;
+  padding: 0 0.2rem;
 }
 
 .latestResults_body > section {
@@ -401,7 +399,8 @@
   justify-content: center;
   align-items: center;
   color: #cccccc;
-  /* padding: 0 1rem; */
+  font-size: 0.8em;
+  padding: 0 0.8rem;
 }
 
 .latestResults_body_table > tbody {
