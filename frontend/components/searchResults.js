@@ -2,6 +2,7 @@ import moment from "moment";
 import styles from "@/styles/Home.module.css";
 
 export default function SearchResults(props) {
+  const slicedResult = props.result.result.slice(0,25);
   return (
     <section className={styles.searchResults}>
       <p className={styles.amountOfTransactions}>
@@ -23,7 +24,8 @@ export default function SearchResults(props) {
             <th className={styles.blueText}>Txn Fee</th>
           </tr>
         </thead>
-        {props.result.result.map((txn) => {
+
+        {slicedResult.map((txn) => {
           return (
             <tr className={styles.txn}>
               <td className={styles.blueText}>{txn.hash.slice(0, 16)}...</td>

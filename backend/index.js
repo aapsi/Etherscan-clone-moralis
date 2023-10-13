@@ -30,15 +30,14 @@ app.get("/getethprice", async (req, res) => {
 });
 
 // end point to fetch block info
-app.get("/getblockinfo", async(req,res) => {
-    try{
-        // Fetch information of the closest block to a specific date.
-        const latestBlock = await Moralis.EvmApi.block.getDateToBlock({
-            date: Date.now(),
-            chain:"0x1"
-        })
-
-        // we need the block number to display it on the site and also
+app.get("/getblockinfo", async (req, res) => {
+    // Fetch information of the closest block to a specific date.
+    try {
+      const latestBlock = await Moralis.EvmApi.block.getDateToBlock({
+        date: Date.now(),
+        chain: "0x1",
+      });
+              // we need the block number to display it on the site and also
         // we need it to make a call to the get block by hash function and to  get parent blocks
 
         // After fetching the information about the latest block, the code needs to retrieve information about the previous blocks.
@@ -50,53 +49,52 @@ app.get("/getblockinfo", async(req,res) => {
         //  It also collects transaction details for the first block (i = 0), 
         //  such as transaction hashes, timestamps, sender addresses, and receiver addresses.
         // This information is collected in the previousBlockInfo array.
-        
-        let blockNrOrParentHash = latestBlock.toJSON().block;
-        let previousBlockInfo = [];
-
-        // we want all the latest transactions from latest block
-        for (let i = 0; i<5; i++) {
-            const previousBlockNrs = await Moralis.EvmApi.block.getBlock({
-                chain:"0x1",
-                blockNumberOrHash: blockNrOrParentHash
-            })
-
-            blockNrOrParentHash = previousBlockNrs.toJSON().parent_hash;
-
-            if (i == 0) {
-                previousBlockInfo.push({
-                  transactions: previousBlockNrs.toJSON().transactions.map((i) => {
-                    return {
-                      transactionHash: i.hash,
-                      time: i.block_timestamp,
-                      fromAddress: i.from_address,
-                      toAddress: i.to_address,
-                      value: i.value,
-                    };
-                  }),
-                });
-              }
-              previousBlockInfo.push({
-                blockNumber: previousBlockNrs.toJSON().number,
-                totalTransactions: previousBlockNrs.toJSON().transaction_count,
-                gasUsed: previousBlockNrs.toJSON().gas_used,
-                miner: previousBlockNrs.toJSON().miner,
-                time: previousBlockNrs.toJSON().timestamp,
-              });
-            }
-            const response = {
-                latestBlock: latestBlock.toJSON().block,
-                previousBlockInfo,
-            };
-        
-            return res.status(200).json(response);
-    } 
-    catch (e) {
-    console.log(`Somthing went wrong ${e}`);
-    return res.status(400).json();
+  
+      let blockNrOrParentHash = latestBlock.toJSON().block;
+      let previousBlockInfo = [];
+  
+      for (let i = 0; i < 5; i++) {
+        const previousBlockNrs = await Moralis.EvmApi.block.getBlock({
+          chain: "0x1",
+          blockNumberOrHash: blockNrOrParentHash,
+        });
+  
+        blockNrOrParentHash = previousBlockNrs.toJSON().parent_hash;
+        if (i == 0) {
+          previousBlockInfo.push({
+            transactions: previousBlockNrs.toJSON().transactions.map((i) => {
+              return {
+                transactionHash: i.hash,
+                time: i.block_timestamp,
+                fromAddress: i.from_address,
+                toAddress: i.to_address,
+                value: i.value,
+              };
+            }),
+          });
+        }
+        previousBlockInfo.push({
+          blockNumber: previousBlockNrs.toJSON().number,
+          totalTransactions: previousBlockNrs.toJSON().transaction_count,
+          gasUsed: previousBlockNrs.toJSON().gas_used,
+          miner: previousBlockNrs.toJSON().miner,
+          time: previousBlockNrs.toJSON().timestamp,
+        });
+      }
+  
+      const response = {
+        latestBlock: latestBlock.toJSON().block,
+        previousBlockInfo,
+      };
+  
+      return res.status(200).json(response);
+    } catch (e) {
+      console.log(`Somthing went wrong ${e}`);
+      return res.status(400).json();
     }
-        
-    });
+  });
+  
+
 
 // end point for getting data and transactions
 // here we will send wallet address from the frontend to the backend client
