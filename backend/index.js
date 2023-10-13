@@ -13,13 +13,13 @@ app.use(express.json());
 const MORALIS_API_KEY = process.env.MORALIS_API_KEY;
 
 // creating an endpoint to get the current price of ether
-app.get("/getethprice", async (res, req) => {
+app.get("/getethprice", async (req, res) => {
     try {
         const response = await Moralis.EvmApi.token.getTokenPrice({
             address:"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
             chain: "0x1"
         });
-    
+        console.log(response)
         return res.status(200).json(response);
     }
     catch(error) {
