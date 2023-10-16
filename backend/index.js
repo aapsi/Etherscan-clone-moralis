@@ -8,11 +8,11 @@ const cors = require("cors");
 require("dotenv").config({ path: ".env" });
 
 app.use(cors(
-  {
-    origin: ["https://etherscan-clone-moralis-frontend.vercel.app"],
-    methods:[ "POST", "GET"],
-    credentials: true
-  }
+  // {
+  //   origin: ["https://etherscan-clone-moralis.vercel.app/"],
+  //   methods:[ "POST", "GET"],
+  //   credentials: true
+  // }
 ));
 app.use(express.json());
 
