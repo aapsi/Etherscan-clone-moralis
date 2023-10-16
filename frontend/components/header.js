@@ -10,7 +10,7 @@ export default function Header() {
 
     useEffect(() => {
         const getEthPrice = async () => {
-            const response = await axios.get('http://localhost:5001/getethprice', {});
+            const response = await axios.get('etherscan-clone-moralis.vercel.app/getethprice', {});
             setEthPrice(response.data.usdPrice);
         };
         getEthPrice();

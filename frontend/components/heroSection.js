@@ -24,13 +24,13 @@ export default function HeroSection() {
 
   useEffect(() => {
     const getEthPrice = async () => {
-      const response = await axios.get(`http://localhost:5001/getethprice`, {});
+      const response = await axios.get(`etherscan-clone-moralis.vercel.app/getethprice`, {});
       setEthPrice(response.data.usdPrice);
     };
 
     const getBlockInfo = async () => {
       const response = await axios.get(
-        `http://localhost:5001/getblockinfo`,
+        `etherscan-clone-moralis.vercel.app/getblockinfo`,
         {}
       );
       console.log("rrr", response);
