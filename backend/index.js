@@ -9,7 +9,7 @@ require("dotenv").config({ path: ".env" });
 
 app.use(cors(
   {
-    origin: [""],
+    origin: ["https://etherscan-clone-moralis-frontend.vercel.app"],
     methods:[ "POST", "GET"],
     credentials: true
   }
