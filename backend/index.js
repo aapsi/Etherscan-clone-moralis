@@ -125,7 +125,7 @@ app.get('/', (req, res) => {
 //     }
 // });
 
-await Moralis.start({
+Moralis.start({
     apiKey: MORALIS_API_KEY
 }).then(()=> {
     app.listen(port, () => {
