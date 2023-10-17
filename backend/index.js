@@ -1,18 +1,14 @@
 //  our backend server
 const express = require("express");
 const app = express()
-const port = 5001;
+const port = 4000;
 const Moralis = require("moralis").default;
 const cors = require("cors");
 
 require("dotenv").config({ path: ".env" });
 
 app.use(cors(
-  // {
-  //   origin: ["https://etherscan-clone-moralis.vercel.app/"],
-  //   methods:[ "POST", "GET"],
-  //   credentials: true
-  // }
+
 ));
 app.use(express.json());
 
@@ -129,3 +125,5 @@ Moralis.start({
         console.log(`Listening for server on port ${port}`)
     })
 })
+
+module.exports = app
