@@ -14,6 +14,7 @@ app.use(cors(
 app.use(express.json());
 
 const MORALIS_API_KEY = process.env.MORALIS_API_KEY;
+console.log(MORALIS_API_KEY)
 
 app.get('/', (req, res) => {
   res.send('Hey this is my API running 🥳')
@@ -129,6 +130,7 @@ Moralis.start({
 }).then(()=> {
     app.listen(port, () => {
         console.log(`Listening for server on port ${port}`)
+  
     })
 })
 
