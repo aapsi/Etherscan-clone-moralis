@@ -1,18 +1,24 @@
-// //  our backend server
-// const express = require("express");
-// const app = express()
-// const port = 4000;
-// const Moralis = require("moralis").default;
-// const cors = require("cors");
+//  our backend server
+const express = require("express");
+const app = express()
+const port = 4000;
+const Moralis = require("moralis").default;
+const cors = require("cors");
 
-// require("dotenv").config({ path: ".env" });
+require("dotenv").config({ path: ".env" });
 
-// app.use(cors(
+app.use(cors(
 
-// ));
-// app.use(express.json());
+));
 
-// const MORALIS_API_KEY = process.env.MORALIS_API_KEY;
+app.use(express.json());
+
+const MORALIS_API_KEY = process.env.MORALIS_API_KEY;
+
+app.get('/', (req, res) => {
+  res.send('Hey this is my API running 🥳')
+})
+
 
 // // creating an endpoint to get the current price of ether
 // app.get("/getethprice", async (req, res) => {
@@ -118,31 +124,13 @@
 //     }
 // });
 
-// Moralis.start({
-//     apiKey: MORALIS_API_KEY
-// }).then(()=> {
-//     app.listen(port, () => {
-//         console.log(`Listening for server on port ${port}`)
-//     })
-// })
-
-// module.exports = app
-
-const express = require('express')
-
-const app = express()
-const PORT = 4000
-
-app.listen(PORT, () => {
-  console.log(`API listening on PORT ${PORT} `)
+Moralis.start({
+    apiKey: MORALIS_API_KEY
+}).then(()=> {
+    app.listen(port, () => {
+        console.log(`Listening for server on port ${port}`)
+    })
 })
 
-app.get('/', (req, res) => {
-  res.send('Hey this is my API running 🥳')
-})
+module.exports = app
 
-app.get('/about', (req, res) => {
-  res.send('This is my about route..... ')
-})
-
-// Export the Express API
