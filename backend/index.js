@@ -125,29 +125,29 @@ app.get('/', (req, res) => {
 //     }
 // });
 
-// Moralis.start({
-//     apiKey: MORALIS_API_KEY
-// }).then(()=> {
-//     app.listen(port, () => {
-//         console.log(`Listening for server on port ${port}`)
+await Moralis.start({
+    apiKey: MORALIS_API_KEY
+}).then(()=> {
+    app.listen(port, () => {
+        console.log(`Listening for server on port ${port}`)
   
-//     })
-// })
+    })
+})
 
-async function startServer() {
-  try {
-      await Moralis.start({
-          apiKey: MORALIS_API_KEY
-      });
-      app.listen(port, () => {
-          console.log(`Listening for server on port ${port}`);
-      });
-  } catch (error) {
-      console.error("Error starting Moralis:", error);
-  }
-}
+// async function startServer() {
+//   try {
+//       await Moralis.start({
+//           apiKey: MORALIS_API_KEY
+//       });
+//       app.listen(port, () => {
+//           console.log(`Listening for server on port ${port}`);
+//       });
+//   } catch (error) {
+//       console.error("Error starting Moralis:", error);
+//   }
+// }
 
-startServer();
+// startServer();
 
 
 module.exports = app
