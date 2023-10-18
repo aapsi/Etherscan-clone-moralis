@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 })
 
 
-// // creating an endpoint to get the current price of ether
+// creating an endpoint to get the current price of ether
 // app.get("/getethprice", async (req, res) => {
 //     try {
 //         const response = await Moralis.EvmApi.token.getTokenPrice({
@@ -125,14 +125,14 @@ app.get('/', (req, res) => {
 //     }
 // });
 
-Moralis.start({
-    apiKey: MORALIS_API_KEY
-}).then(()=> {
-    app.listen(port, () => {
-        console.log(`Listening for server on port ${port}`)
+// Moralis.start({
+//     apiKey: MORALIS_API_KEY,
+// }).then(()=> {
+//     app.listen(port, () => {
+//         console.log(`Listening for server on port ${port}`)
   
-    })
-})
+//     })
+// })
 
 // async function startServer() {
 //   try {
@@ -149,6 +149,7 @@ Moralis.start({
 
 // startServer();
 
-
-module.exports = app
+app.listen(port, () => {
+          console.log(`Listening for server on port ${port}`)});
+module.exports = app;
 
